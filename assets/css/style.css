@@ -173,7 +173,7 @@ h1 {
 }
 
 h2 {
-  font-size: 50px;
+  font-size: 30px;
 }
 
 h3 {
@@ -1989,7 +1989,7 @@ img.left {
 }
 
 .fz-80 {
-  font-size: 80px !important;
+  font-size: 60px !important;
 }
 
 .fz-100 {
@@ -10296,4 +10296,28 @@ footer.clean-footer.crev:before {
 
 
 /* ====================== [ hero section end ] ====================== */
+
+.styled-points {
+  list-style: none; /* remove default bullets */
+  padding: 0;
+  margin: 0;
+}
+
+.styled-points li {
+  position: relative;
+  padding-left: 28px; /* space for custom bullet */
+  margin-bottom: 10px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #fbf9f9;
+}
+
+.styled-points li::before {
+  content: "≫"; /* custom bullet icon */
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #2a9d8f; /* bullet color */
+  font-size: 18px;
+}
 
