@@ -1351,62 +1351,41 @@ $(function () {
         -----------------------------  Portfolio Fixed  --------------------------------
         ============================================================================= */
 
-        wind.on('scroll', function () {
-            $(".portfolio-fixed .sub-bg .cont").each(function () {
-                var bottom_of_object =
-                    $(this).offset().top + $(this).outerHeight();
-                var bottom_of_window =
-                    $(window).scrollTop() + $(window).height();
-                var tab_id = $(this).attr('data-tab');
-                if (bottom_of_window > bottom_of_object) {
-                    $("#" + tab_id).addClass('current');
-                    $(this).addClass('current');
+        document.querySelectorAll('[data-scroll-nav], .dmenu, .nav-link[href^="#"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                let section = this.getAttribute('data-scroll-nav') ||
+                              this.closest('[data-scroll-nav]')?.getAttribute('data-scroll-nav') ||
+                              this.getAttribute('href')?.replace('#', '');
+        
+                if (!section) return;
+        
+                // Detect if on home page
+                let isHome = window.location.pathname === '/' || window.location.pathname.endsWith('index.html');
+        
+                if (!isHome) {
+                    // From inner page → go to home with hash
+                    e.preventDefault();
+                    window.location.href = '/#' + section;
                 } else {
-                    $("#" + tab_id).removeClass('current');
-                    $(this).removeClass('current');
+                    // On home page → smooth scroll
+                    const target = document.querySelector(`[data-scroll-index="${section}"], #${section}`);
+                    if (target) {
+                        e.preventDefault();
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
                 }
             });
         });
-    }
-});
-
-
-$(function () {
-    var width = $(window).width();
-    if (width < 991) {
-
-        "use strict";
-
-        $(".navbar .navbar-nav").on("click", ".nav-link", function () {
-
-            $(".navbar .navbar-nav .dropdown .dropdown-menu").removeClass("show");
-
-            $(this).parent().find(".dropdown-menu").addClass("show");
+        
+        // On load with hash → scroll to section
+        window.addEventListener('load', function() {
+            if (window.location.hash) {
+                const section = window.location.hash.replace('#', '');
+                const target = document.querySelector(`[data-scroll-index="${section}"], #${section}`);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
         });
-    }
-});
-
-// navbar url pointing
-
-document.querySelectorAll('[data-scroll-nav], .dmenu').forEach(link => {
-    link.addEventListener('click', function(e) {
-        let section = this.getAttribute('data-scroll-nav') || 
-                      this.closest('[data-scroll-nav]')?.getAttribute('data-scroll-nav');
-
-        if (!window.location.pathname.endsWith('home.html')) {
-            e.preventDefault();
-            window.location.href = 'home.html#' + section;
-        }
-    });
-});
-
-window.addEventListener('load', function() {
-    if (window.location.hash) {
-        const section = window.location.hash.replace('#', '');
-        const target = document.querySelector(`[data-scroll-index="${section}"]`);
-        if (target) {
-            target.scrollIntoView({ behavior: 'smooth' });
-        }
-    }
-});
+        
 
