@@ -1386,3 +1386,27 @@ $(function () {
     }
 });
 
+// navbar url pointing
+
+document.querySelectorAll('[data-scroll-nav], .dmenu').forEach(link => {
+    link.addEventListener('click', function(e) {
+        let section = this.getAttribute('data-scroll-nav') || 
+                      this.closest('[data-scroll-nav]')?.getAttribute('data-scroll-nav');
+
+        if (!window.location.pathname.endsWith('home.html')) {
+            e.preventDefault();
+            window.location.href = 'home.html#' + section;
+        }
+    });
+});
+
+window.addEventListener('load', function() {
+    if (window.location.hash) {
+        const section = window.location.hash.replace('#', '');
+        const target = document.querySelector(`[data-scroll-index="${section}"]`);
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth' });
+        }
+    }
+});
+
