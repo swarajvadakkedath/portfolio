@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swaraj | Project Showcase</title>
+    
+    <!-- Tailwind CSS (via CDN for instant testing) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Outfit (Headings) & Inter (Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
+
+    <!-- Custom Config for Fonts -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: '#6366f1', // Indigo accent
+                        dark: '#0B0C10',
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Smooth scrolling for the whole page */
+        html { scroll-behavior: smooth; }
+        /* Active filter button style */
+        .filter-btn.active {
+            @apply bg-brand text-white;
+        }
+    </style>
+</head>
+
+<body class="bg-dark text-white selection:bg-brand selection:text-white">
+
+    <!-- NAVIGATION (Simplified for inner page) -->
+    <nav class="sticky w-full z-50 top-0 left-0 border-b border-white/10 backdrop-blur-md bg-dark/70">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <!-- Logo / Back to Home -->
+            <a href="index.html" class="text-2xl font-display font-bold tracking-tighter hover:text-brand transition-colors flex items-center gap-2">
+                <span class="text-xl">←</span> SWARAJ<span class="text-brand">.</span>
+            </a>
+
+            <!-- Contact CTA -->
+            <a href="mailto:swarajvadakkedath@gmail.com" class="px-5 py-2.5 bg-white text-dark font-bold rounded-full hover:bg-brand hover:text-white transition-all duration-300 text-sm">
+                Get In Touch
+            </a>
+        </div>
+    </nav>
+
+    <!-- SHOWCASE GALLERY SECTION -->
+    <section class="py-24">
+        <div class="max-w-7xl mx-auto px-6">
+            
+            <!-- Header -->
+            <div class="mb-12 text-center">
+                <h1 class="text-5xl font-display font-bold text-white">Project Showcase</h1>
+                <p class="text-xl text-gray-400 mt-2">A comprehensive gallery of my UI/UX, SaaS, and Graphic Design work.</p>
+            </div>
+
+            <!-- FILTER BUTTONS -->
+            <div class="flex flex-wrap justify-center gap-3 mb-16">
+                <button data-filter="all" class="filter-btn active px-5 py-2 rounded-full border border-white/20 text-gray-300 hover:bg-white/10 transition-colors text-sm font-medium">All Works (10)</button>
+                <button data-filter="web-design" class="filter-btn px-5 py-2 rounded-full border border-white/20 text-gray-300 hover:bg-white/10 transition-colors text-sm font-medium">Web & App UI (4)</button>
+                <button data-filter="saas" class="filter-btn px-5 py-2 rounded-full border border-white/20 text-gray-300 hover:bg-white/10 transition-colors text-sm font-medium">SaaS Apps (3)</button>
+                <button data-filter="graphics" class="filter-btn px-5 py-2 rounded-full border border-white/20 text-gray-300 hover:bg-white/10 transition-colors text-sm font-medium">Graphic Design (3)</button>
+            </div>
+
+            <!-- PROJECT GRID -->
+            <div id="project-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Project Item 1 (SaaS) -->
+                <a href="#" data-category="saas web-design" class="project-item group block bg-white/5 border border-white/10 rounded-xl overflow-hidden shadow-lg hover:border-brand/50 transition-all duration-300">
+                    <div class="aspect-video overflow-hidden bg-gray-900">
+                        <img src="https://placehold.co/600x400/18181b/ffffff?text=Store+Management+SaaS" alt="Store Management UI" class="w-full h-full object-cover group-hover:scale-[1.05] transition-transform duration-500 opacity-90 group-hover:opacity-100">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-xl font-display font-bold text-white">Store Management App</h3>
+                        <p class="text-sm text-gray-400 mt-1">UX/UI Redesign & Prototyping</p>
+                        <span class="text-xs font-medium px-2 py-0.5 bg-brand/10 text-brand rounded mt-2 inline-block">SaaS</span>
+                    </div>
+                </a>
+                
+                <!-- Project Item 2 (Web Design) -->
+                <a href="#" data-category="web-design" class="project-item group block bg-white/5 border border-white/10 rounded-xl overflow-hidden shadow-lg hover:border-brand/50 transition-all duration-300">
+                    <div class="aspect-video overflow-hidden bg-gray-900">
+                        <img src="https://placehold.co/600x400/18181b/ffffff?text=LMS+Platform+UI" alt="LMS Platform UI" class="w-full h-full object-cover group-hover:scale-[1.05] transition-transform duration-500 opacity-90 group-hover:opacity-100">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-xl font-display font-bold text-white">LMS Education Platform</h3>
+                        <p class="text-sm text-gray-400 mt-1">Information Architecture & Frontend Polish</p>
+                        <span class="text-xs font-medium px-2 py-0.5 bg-white/10 text-gray-300 rounded mt-2 inline-block">Web UI</span>
+                    </div>
+                </a>
+                
+                <!-- Project Item 3 (Graphics) -->
+                <a href="#" data-category="graphics" class="project-item group block bg-white/5 border border-white/10 rounded-xl overflow-hidden shadow-lg hover:border-brand/50 transition-all duration-300">
+                    <div class="aspect-video overflow-hidden bg-gray-900">
+                        <img src="https://placehold.co/600x400/18181b/ffffff?text=Social+Media+Graphics" alt="Graphic Design Examples" class="w-full h-full object-cover group-hover:scale-[1.05] transition-transform duration-500 opacity-90 group-hover:opacity-100">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-xl font-display font-bold text-white">Brand Social Campaign</h3>
+                        <p class="text-sm text-gray-400 mt-1">Branding & Motion Graphics</p>
+                        <span class="text-xs font-medium px-2 py-0.5 bg-red-600/10 text-red-400 rounded mt-2 inline-block">Graphics</span>
+                    </div>
+                </a>
+
+                <!-- Project Item 4 (Web Design) -->
+                <a href="#" data-category="web-design" class="project-item group block bg-white/5 border border-white/10 rounded-xl overflow-hidden shadow-lg hover:border-brand/50 transition-all duration-300">
+                    <div class="aspect-video overflow-hidden bg-gray-900">
+                        <img src="https://placehold.co/600x400/18181b/ffffff?text=Dee+Dee+Website" alt="Dee Dee Decorators" class="w-full h-full object-cover group-hover:scale-[1.05] transition-transform duration-500 opacity-90 group-hover:opacity-100">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-xl font-display font-bold text-white">Dee Dee Decorators</h3>
+                        <p class="text-sm text-gray-400 mt-1">E-commerce Presentation Site</p>
+                        <span class="text-xs font-medium px-2 py-0.5 bg-white/10 text-gray-300 rounded mt-2 inline-block">Web Design</span>
+                    </div>
+                </a>
+
+                 <!-- Project Item 5 (SaaS) -->
+                <a href="#" data-category="saas" class="project-item group block bg-white/5 border border-white/10 rounded-xl overflow-hidden shadow-lg hover:border-brand/50 transition-all duration-300">
+                    <div class="aspect-video overflow-hidden bg-gray-900">
+                        <img src="https://placehold.co/600x400/18181b/ffffff?text=Mobile+App+UI" alt="Mobile App UI" class="w-full h-full object-cover group-hover:scale-[1.05] transition-transform duration-500 opacity-90 group-hover:opacity-100">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-xl font-display font-bold text-white">FinTech Mobile App</h3>
+                        <p class="text-sm text-gray-400 mt-1">Native App Design for Investment</p>
+                        <span class="text-xs font-medium px-2 py-0.5 bg-brand/10 text-brand rounded mt-2 inline-block">SaaS</span>
+                    </div>
+                </a>
+                
+                 <!-- Project Item 6 (Graphics) -->
+                <a href="#" data-category="graphics" class="project-item group block bg-white/5 border border-white/10 rounded-xl overflow-hidden shadow-lg hover:border-brand/50 transition-all duration-300">
+                    <div class="aspect-video overflow-hidden bg-gray-900">
+                        <img src="https://placehold.co/600x400/18181b/ffffff?text=Logo+Design" alt="Logo Design" class="w-full h-full object-cover group-hover:scale-[1.05] transition-transform duration-500 opacity-90 group-hover:opacity-100">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-xl font-display font-bold text-white">Client Logo & Identity</h3>
+                        <p class="text-sm text-gray-400 mt-1">Comprehensive Brand Style Guide</p>
+                        <span class="text-xs font-medium px-2 py-0.5 bg-red-600/10 text-red-400 rounded mt-2 inline-block">Graphics</span>
+                    </div>
+                </a>
+                
+                <!-- Placeholder for more projects... -->
+                <div class="lg:col-span-3 text-center pt-8">
+                    <p class="text-gray-500 italic">...4 more projects available upon request.</p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const projects = document.querySelectorAll('.project-item');
+            const projectGrid = document.getElementById('project-grid');
+
+            // Initial setup: Update count in All button
+            document.querySelector('[data-filter="all"]').textContent = `All Works (${projects.length})`;
+
+            // Function to filter projects
+            const filterProjects = (filter) => {
+                let visibleCount = 0;
+                
+                // Use a transition for hiding/showing
+                projectGrid.classList.add('opacity-0', 'duration-300'); 
+                
+                // Delay filtering to allow transition
+                setTimeout(() => {
+                    projects.forEach(project => {
+                        const categories = project.getAttribute('data-category').split(' ');
+                        const isVisible = filter === 'all' || categories.includes(filter);
+
+                        if (isVisible) {
+                            project.style.display = 'block';
+                            visibleCount++;
+                        } else {
+                            project.style.display = 'none';
+                        }
+                    });
+                    
+                    // Re-enable visibility after filtering
+                    projectGrid.classList.remove('opacity-0'); 
+                }, 300); // Match CSS transition duration
+            };
+
+            // Event Listener for buttons
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const filter = button.getAttribute('data-filter');
+                    
+                    // Update active state
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+
+                    filterProjects(filter);
+                });
+            });
+
+            // Set initial transition class
+            projectGrid.classList.add('transition-opacity');
+        });
+    </script>
+
+</body>
+</html>
